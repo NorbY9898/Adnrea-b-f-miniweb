@@ -60,7 +60,7 @@
       width:34px;
       height:34px;
       border-radius:10px;
-      background: url("./logo.png") center/cover no-repeat;
+      background: url("./logo.png") center/cover no-repeat; /* <-- LOGÓ KÉP */
     }
     .brand .name{
       font-family:"Cormorant Garamond", serif;
@@ -506,7 +506,6 @@
         </a>
 
         <nav class="menu" aria-label="Főmenü">
-          <!-- ✅ RÓLUNK: most már modal nyitás -->
           <a id="openRolunk">Rólunk</a>
           <a href="#kinalat">Kínálat</a>
           <a id="goMenu">Menü</a>
@@ -520,8 +519,7 @@
             </svg>
           </button>
 
-          <!-- ✅ Ezek már LINK-re mennek (később beírod) -->
-          <button class="pill" id="https://norby9898.github.io/Andrea-tlap/">Étlap</button>
+          <button class="pill" id="btnEtlap">Étlap</button>
           <button class="pill" id="btnUditok">Üdítők</button>
         </div>
       </div>
@@ -539,9 +537,7 @@
       <div class="kicker">Szeretettel várunk finom ételekkel és hűsítő italokkal</div>
       <h1 class="hero-title">ANDREA BÜFÉ</h1>
       <div class="hero-sub">Hangulatos büféter</div>
-      <p class="hero-text">
-        Barátságos kiszolgálás és válogatott kínálat.
-      </p>
+      <p class="hero-text">Barátságos kiszolgálás és válogatott kínálat.</p>
     </div>
   </section>
 
@@ -561,15 +557,10 @@
       <div class="split-content">
         <div class="card">
           <h3 class="title">Kóstold meg a kedvenceket</h3>
+          <p>Friss, gyors ételek és hűsítő italok – mindennap szeretettel várunk.</p>
 
-          <p>
-            Friss, gyors ételek és hűsítő italok – mindennap szeretettel várunk.
-          </p>
-
-          <!-- ✅ Csere: „Étlap megnyitása” -> „Ház ajánlata” -->
           <button class="outline-btn" id="openHazAjanlata">Ház ajánlata</button>
 
-          <!-- ✅ Linkre menő gombok -->
           <button class="outline-btn" id="btnEtlap2">Étlap</button>
           <button class="outline-btn" id="btnUditok2">Üdítők</button>
         </div>
@@ -591,7 +582,7 @@
     </div>
   </footer>
 
-  <!-- ============ MODAL: RÓLUNK (rejtve, gombra nyílik) ============ -->
+  <!-- ============ MODAL: RÓLUNK ============ -->
   <div class="modal-backdrop" id="rolunkModal" role="dialog" aria-modal="true" aria-label="Rólunk">
     <div class="modal">
       <header>
@@ -623,8 +614,7 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
               <li>Könnyen megközelíthető, kényelmes hely</li>
             </ul>
 
-        
-            </div>
+            <!-- ✅ KÉRÉS: innen kivettük a Kínálat / Étlap / Üdítők gombokat -->
           </div>
         </div>
       </div>
@@ -644,7 +634,7 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
     </div>
   </div>
 
-  <!-- ============ MODAL: KERESÉS (opcionális) ============ -->
+  <!-- ============ MODAL: KERESÉS ============ -->
   <div class="modal-backdrop" id="searchModal" role="dialog" aria-modal="true" aria-label="Keresés">
     <div class="modal">
       <header>
@@ -658,11 +648,9 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
   </div>
 
   <script>
-    // =========================================================
-    // ✅ IDE ILLESZD BE KÉSŐBB A LINKJEIDET (ÉTLAP / ITALLAP)
-    // =========================================================
-    const ETLAP_URL  = "https://norby9898.github.io/Andrea-tlap/";   // pl. "etlap.html" vagy "https://..."
-    const UDITOK_URL = "IDE_JON_AZ_ITAL_LAP_LINK"; // pl. "uditok.html" vagy "https://..."
+    // ✅ LINKEK
+    const ETLAP_URL  = "https://norby9898.github.io/Andrea-tlap/";
+    const UDITOK_URL = "IDE_JON_AZ_ITAL_LAP_LINK"; // <-- majd cseréled, ha kész
 
     // év
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -697,48 +685,37 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
       }
     });
 
-    // =========================
-    // RÓLUNK: csak gombra nyíljon
-    // =========================
+    // Rólunk
     document.getElementById("openRolunk").addEventListener("click", ()=> openModal("rolunkModal"));
     document.getElementById("openRolunk2").addEventListener("click", ()=> openModal("rolunkModal"));
 
-    // =========================
-    // MENÜ: csak görgetés (ne modal)
-    // =========================
+    // Menü görgetés
     document.getElementById("goMenu").addEventListener("click", ()=>{
       document.querySelector("#kinalat").scrollIntoView({behavior:"smooth", block:"start"});
     });
 
-    // =========================
-    // ÉTLAP / ÜDÍTŐK: külön oldalra vigyen
-    // =========================
+    // Oldalra navigálás
     function goTo(url){
       if(!url || url.includes("IDE_JON")){
-        alert("Ide majd be kell illesztened a linket a scriptben (ETLAP_URL / UDITOK_URL).");
+        alert("Ide majd be kell illesztened a linket (UDITOK_URL).");
         return;
       }
-      window.location.href = url;
+      window.location.href = url;  // ✅ JAVÍTVA (nálad itt volt a hiba!)
     }
 
+    // Étlap/Üdítők gombok
     document.getElementById("btnEtlap").addEventListener("click", ()=> goTo(ETLAP_URL));
     document.getElementById("btnUditok").addEventListener("click", ()=> goTo(UDITOK_URL));
     document.getElementById("btnEtlap2").addEventListener("click", ()=> goTo(ETLAP_URL));
     document.getElementById("btnUditok2").addEventListener("click", ()=> goTo(UDITOK_URL));
-    document.getElementById("btnEtlap3").addEventListener("click", ()=> goTo(ETLAP_URL));
-    document.getElementById("btnUditok3").addEventListener("click", ()=> goTo(UDITOK_URL));
 
-    // =========================
-    // HÁZ AJÁNLATA: lista + árak
-    // (itt bővítsd a termékeket később)
-    // =========================
+    // Ház ajánlata lista
     const houseOffers = [
       { name:"Melegszendvics", desc:"Sonka-sajt, friss zöldség", price:"1 690 Ft" },
       { name:"Napi menü", desc:"Hamburger", price:"2 490 Ft" },
       { name:"Coca-Cola / Zero", desc:"0,33l / 0,5l", price:"450 Ft-tól" },
       { name:"Ásványvíz", desc:"Szénsavas / mentes", price:"350 Ft-tól" },
     ];
-
     const hazList = document.getElementById("hazList");
 
     function renderHazAjanlata(){
@@ -756,15 +733,12 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
         hazList.appendChild(div);
       });
     }
-
     document.getElementById("openHazAjanlata").addEventListener("click", ()=>{
       renderHazAjanlata();
       openModal("hazModal");
     });
 
-    // =========================
-    // KERESÉS (opcionális demo)
-    // =========================
+    // Keresés (demo)
     const searchResults = document.getElementById("searchResults");
     document.getElementById("openSearch").addEventListener("click", ()=>{
       searchResults.innerHTML = "";
@@ -786,16 +760,11 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
 
   <!--
     ✅ KÉPEK (index.html mellett):
-    images0.jpg   (HERO BAL)
-    images1.jpg   (HERO JOBB)
-    image0.jpeg   (RÓLUNK BAL KÉP)
-    feature-left.jpg (KÍNÁLAT BAL KÉP)
-
-    Ha más a nevük, cseréld a CSS-ben ezeket:
-    - .hero-bg .left
-    - .hero-bg .right
-    - .about-media::before
-    - .split-img::before
+    logo.png
+    images0.jpg
+    images1.jpg
+    image0.jpeg
+    image6.jpeg
   -->
 </body>
 </html>
