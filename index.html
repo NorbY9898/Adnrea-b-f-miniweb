@@ -12,16 +12,13 @@
 
   <style>
     :root{
-      /* ✅ KRÉM ALAP + ELEGÁNS SÖTÉT SZÖVEG */
       --cream:#f6f0e6;
       --cream2:#efe6d8;
       --ink:#1f1a14;
       --ink2:rgba(31,26,20,.74);
       --line:rgba(31,26,20,.14);
       --accent:#8a5a2b;
-      --accent2:#b07a3f;
       --shadow: 0 18px 50px rgba(0,0,0,.12);
-      --radius: 16px;
       --max: 1200px;
     }
 
@@ -41,9 +38,7 @@
     button{font:inherit}
     .container{max-width:var(--max); margin:0 auto; padding:0 22px}
 
-    /* =========================
-       TOP NAV
-       ========================= */
+    /* TOP NAV */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -62,12 +57,10 @@
       min-width: 180px;
     }
     .logo{
-      width:34px; height:34px; border-radius:10px;
-      border:1px solid rgba(138,90,43,.35);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(176,122,63,.35), transparent 60%),
-        linear-gradient(180deg, rgba(138,90,43,.18), rgba(0,0,0,0));
-      box-shadow: 0 10px 26px rgba(0,0,0,.08);
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background: url("./logo.png") center/cover no-repeat;
     }
     .brand .name{
       font-family:"Cormorant Garamond", serif;
@@ -100,6 +93,7 @@
       color:rgba(31,26,20,.78);
       padding:10px 8px;
       position:relative;
+      cursor:pointer;
     }
     .menu a::after{
       content:"";
@@ -114,7 +108,7 @@
     .menu a:hover::after{opacity:1; transform: translateY(0)}
 
     .nav-actions{
-      min-width: 220px;
+      min-width: 260px;
       display:flex; align-items:center; justify-content:flex-end; gap:12px;
     }
 
@@ -154,9 +148,7 @@
       box-shadow: 0 14px 30px rgba(0,0,0,.10);
     }
 
-    /* =========================
-       HERO (kollázs)
-       ========================= */
+    /* HERO (kollázs) */
     .hero{
       position:relative;
       height: 420px;
@@ -176,21 +168,13 @@
       transform: scale(1.03);
     }
 
-    /* =======================================================
-       ✅ KÉPEK HELYE (INDEX.HTML MELLETT VANNAK!)
-       - A képeket az index.html mellé tedd ugyanabba a mappába
-       - Útvonal: "images0.jpg" (NINCS assets/ mappa!)
-       ======================================================= */
-
-    /* !!! HERO BAL (már megvan nálad: images0.jpg) !!! */
-    .hero-bg .left{  background-image:url("images0.jpg"); }
-
-    /* !!! HERO JOBB (ide add meg a másik képed nevét) !!! */
-    .hero-bg .right{ background-image:url("images1.jpg"); } /* <-- CSERÉLD! */
+    /* ✅ KÉPEK: index.html mellett */
+    .hero-bg .left{  background-image:url("./images0.jpg"); }
+    .hero-bg .right{ background-image:url("./images1.jpg"); } /* <-- CSERÉLD */
 
     .hero::before{
       content:"";
-      position:absolute; inset:-40px -40px -40px -40px;
+      position:absolute; inset:-40px;
       background:
         radial-gradient(800px 420px at 50% 35%, rgba(246,240,230,.20), rgba(31,26,20,.52) 55%, rgba(31,26,20,.66) 85%),
         linear-gradient(180deg, rgba(31,26,20,.35), rgba(31,26,20,.12) 40%, rgba(31,26,20,.42));
@@ -242,9 +226,7 @@
       color: rgba(31,26,20,.74);
     }
 
-    /* =========================
-       FEJLÉC SZEKCIÓ CÍM
-       ========================= */
+    /* SECTION HEAD */
     .section-head{
       background: linear-gradient(180deg, rgba(246,240,230,.75), rgba(239,230,216,.75));
       border-bottom:1px solid var(--line);
@@ -266,130 +248,7 @@
       color:var(--ink);
     }
 
-    /* =========================
-       RÓLUNK (bal kép / jobb szöveg)
-       + scroll animáció
-       ========================= */
-    .about{
-      position:relative;
-      padding: 64px 0;
-      background: linear-gradient(180deg, rgba(246,240,230,.55), rgba(239,230,216,.9));
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-    .about-wrap{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 26px;
-      align-items:stretch;
-    }
-    .about-media{
-      position:relative;
-      border-radius: 20px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      min-height: 360px;
-
-      transform: translateY(18px);
-      opacity: 0;
-      transition: .8s cubic-bezier(.2,.7,.2,1);
-    }
-
-    /* !!! RÓLUNK BAL KÉP (cseréld a fájlnevet) !!! */
-    .about-media::before{
-      content:"image0.jpeg";
-      position:absolute; inset:0;
-      background: url("image0.jpeg") center/cover no-repeat; /* <-- CSERÉLD! */
-      transform: scale(1.05);
-      filter: contrast(1.03) saturate(.98);
-    }
-    .about-media::after{
-      content:"image0.jpeg";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px 420px at 20% 55%, rgba(0,0,0,.06), rgba(0,0,0,.32)),
-        linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.18));
-    }
-
-    .about-panel{
-      border-radius: 20px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.45);
-      box-shadow: var(--shadow);
-      padding: 30px 26px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-
-      transform: translateY(18px);
-      opacity: 0;
-      transition: .8s cubic-bezier(.2,.7,.2,1);
-      transition-delay: .08s;
-    }
-    .about-kicker{
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:rgba(31,26,20,.62);
-      margin-bottom:10px;
-    }
-    .about-title{
-      font-family:"Cormorant Garamond", serif;
-      font-weight:700;
-      font-size: 34px;
-      letter-spacing:.12em;
-      margin:0 0 14px;
-      text-transform:uppercase;
-      color:var(--ink);
-    }
-    .about-text{
-      color: rgba(31,26,20,.78);
-      font-size: 14px;
-      line-height: 1.85;
-      margin: 0 0 18px;
-    }
-    .about-points{
-      margin:0;
-      padding-left: 18px;
-      color: rgba(31,26,20,.78);
-      font-size: 13px;
-      line-height: 1.9;
-    }
-    .about-points li{margin:6px 0}
-    .about-cta{
-      margin-top:18px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .outline-btn{
-      display:inline-flex;
-      height:42px;
-      padding:0 16px;
-      border-radius: 12px;
-      border:1px solid rgba(138,90,43,.45);
-      background: rgba(255,255,255,.25);
-      color:var(--ink);
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size:12px;
-      cursor:pointer;
-      transition:.2s ease;
-    }
-    .outline-btn:hover{
-      background: rgba(138,90,43,.12);
-      transform: translateY(-1px);
-    }
-
-    .reveal.is-visible{
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* =========================
-       KÍNÁLAT SPLIT
-       ========================= */
+    /* KÍNÁLAT SPLIT */
     .split{
       position:relative;
       background: linear-gradient(180deg, rgba(246,240,230,.6), rgba(239,230,216,.95));
@@ -405,12 +264,10 @@
       overflow:hidden;
       border-right:1px solid var(--line);
     }
-
-    /* !!! KÍNÁLAT BAL NAGY KÉP (cseréld a fájlnevet) !!! */
     .split-img::before{
       content:"";
       position:absolute; inset:0;
-      background: url("feature-left.jpg") center/cover no-repeat; /* <-- CSERÉLD! */
+      background: url("./image6.jpeg") center/cover no-repeat; /* <-- CSERÉLD */
       transform: scale(1.04);
       filter: contrast(1.03) saturate(.98);
     }
@@ -446,9 +303,28 @@
       line-height: 1.8;
     }
 
-    /* =========================
-       MODALOK
-       ========================= */
+    .outline-btn{
+      display:inline-flex;
+      height:42px;
+      padding:0 16px;
+      border-radius: 12px;
+      border:1px solid rgba(138,90,43,.45);
+      background: rgba(255,255,255,.25);
+      color:var(--ink);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:12px;
+      cursor:pointer;
+      transition:.2s ease;
+      margin-right:10px;
+      margin-top:8px;
+    }
+    .outline-btn:hover{
+      background: rgba(138,90,43,.12);
+      transform: translateY(-1px);
+    }
+
+    /* MODALOK */
     .modal-backdrop{
       position:fixed; inset:0;
       background: rgba(0,0,0,.48);
@@ -460,7 +336,7 @@
     }
     .modal-backdrop.show{display:flex}
     .modal{
-      width:min(760px, 100%);
+      width:min(900px, 100%);
       border-radius: 18px;
       border:1px solid var(--line);
       background: rgba(246,240,230,.95);
@@ -492,29 +368,7 @@
     }
     .modal .body{padding: 18px;}
 
-    .tabs{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:14px;
-    }
-    .tab{
-      height:36px;
-      padding:0 12px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.55);
-      color: rgba(31,26,20,.88);
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:11px;
-      cursor:pointer;
-      transition:.15s ease;
-    }
-    .tab.active{
-      border-color: rgba(138,90,43,.40);
-      background: rgba(138,90,43,.10);
-    }
-
-    .list{margin-top:14px; display:grid; gap:10px;}
+    .list{display:grid; gap:10px;}
     .item{
       border:1px solid var(--line);
       background: rgba(255,255,255,.55);
@@ -535,6 +389,73 @@
       white-space:nowrap;
     }
 
+    /* RÓLUNK modal premium layout */
+    .about-wrap{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+    .about-media{
+      position:relative;
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      min-height: 360px;
+      box-shadow: var(--shadow);
+    }
+    .about-media::before{
+      content:"";
+      position:absolute; inset:0;
+      background: url("./image0.jpeg") center/cover no-repeat; /* <-- CSERÉLD, ha kell */
+      transform: scale(1.03);
+    }
+    .about-media::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(900px 420px at 20% 55%, rgba(0,0,0,.05), rgba(0,0,0,.28));
+    }
+    .about-panel{
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      overflow:auto;
+      max-height: 520px;
+    }
+    .about-kicker{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(31,26,20,.62);
+      margin-bottom:10px;
+    }
+    .about-title{
+      font-family:"Cormorant Garamond", serif;
+      font-weight:700;
+      font-size: 34px;
+      letter-spacing:.12em;
+      margin:0 0 12px;
+      text-transform:uppercase;
+      color:var(--ink);
+    }
+    .about-text{
+      color: rgba(31,26,20,.78);
+      font-size: 14px;
+      line-height: 1.85;
+      margin: 0 0 14px;
+      white-space:pre-line;
+    }
+    .about-points{
+      margin:0;
+      padding-left: 18px;
+      color: rgba(31,26,20,.78);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .about-points li{margin:6px 0}
+
     footer{
       border-top:1px solid var(--line);
       padding: 26px 0;
@@ -553,14 +474,13 @@
       .menu{display:none;}
       .nav-actions{min-width:auto}
 
-      .about-wrap{grid-template-columns: 1fr;}
-      .about-media{min-height: 280px;}
-      .about-panel{padding: 24px 18px;}
-
       .split-wrap{grid-template-columns: 1fr;}
       .split-img{min-height: 320px; border-right:none; border-bottom:1px solid var(--line);}
       .split-content{padding: 34px 22px;}
       .card{max-width: 680px; margin:0 auto;}
+
+      .about-wrap{grid-template-columns:1fr;}
+      .about-panel{max-height:none}
     }
     @media (max-width: 520px){
       .hero-title{font-size:36px}
@@ -586,9 +506,10 @@
         </a>
 
         <nav class="menu" aria-label="Főmenü">
-          <a href="#rolunk">Rólunk</a>
+          <!-- ✅ RÓLUNK: most már modal nyitás -->
+          <a id="openRolunk">Rólunk</a>
           <a href="#kinalat">Kínálat</a>
-          <a href="#menu">Menü</a>
+          <a id="goMenu">Menü</a>
         </nav>
 
         <div class="nav-actions">
@@ -599,8 +520,9 @@
             </svg>
           </button>
 
-          <button class="pill" id="openMenu">Étlap</button>
-          <button class="pill" id="openUditok">Üdítők</button>
+          <!-- ✅ Ezek már LINK-re mennek (később beírod) -->
+          <button class="pill" id="btnEtlap">Étlap</button>
+          <button class="pill" id="btnUditok">Üdítők</button>
         </div>
       </div>
     </div>
@@ -614,53 +536,12 @@
     </div>
 
     <div class="hero-center">
-      <div class="kicker">Szeretettel várunk finom ételekkel és italokkal</div>
+      <div class="kicker">Szeretettel várunk finom ételekkel és hűsítő italokkal</div>
       <h1 class="hero-title">ANDREA BÜFÉ</h1>
       <div class="hero-sub">Hangulatos büféter</div>
       <p class="hero-text">
-        Modern, krém-elegáns hangulat, barátságos kiszolgálás és válogatott kínálat.
+        Barátságos kiszolgálás és válogatott kínálat.
       </p>
-    </div>
-  </section>
-
-  <!-- RÓLUNK -->
-  <section class="about" id="rolunk">
-    <div class="container">
-      <div class="about-wrap">
-        <div class="about-media reveal" aria-label="Rólunk kép"></div>
-
-        <div class="about-panel reveal">
-          <div class="about-kicker">Andrea Büfé</div>
-          <h2 class="about-title">Rólunk</h2>
-
-          <!-- =========================
-               ✅ IDE ILLESZD A SAJÁT RÓLUNK SZÖVEGED
-               ========================= -->
-          <p class="about-text">
-            Több mint 30 éve Önökért 💛
-
-            1993-ban nyitottuk meg kis hamburger büfénket. Andrea akkor még csak néhány évre tervezett, de a sors másképp alakította – és milyen jól tette! Azóta is szeretettel várja régi és új vendégeit.
-
-            Az évek során a családi vállalkozás igazi összefogássá vált: lánya, Ivett, valamint Roland is csatlakozott a csapathoz, így ma már együtt dolgozunk azért, hogy mindenki elégedetten távozzon.
-
-            2017 óta hivatalosan is Andrea Büfé néven ismernek bennünket, de törzsvendégeink számára mindig is „Bázis” maradunk. A kis „Bázis” feliratú táblánkat is tőlük kaptuk – ami számunkra nemcsak egy név, han em egy közösség jelképe.
-
-            Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt élvezhessük a nyár ízeit és hangulatát
-          </p>
-
-          <ul class="about-points">
-            <li>Friss, gyors ételek és hüsitő italok</li>
-            <li>Barátságos kiszolgálás, családias hangulat</li>
-            <li>Könnyen megközelíthető, kényelmes hely</li>
-          </ul>
-
-          <div class="about-cta">
-            <button class="outline-btn" id="scrollKinalat">Kínálat</button>
-            <button class="outline-btn" id="openMenu2">Étlap</button>
-            <button class="outline-btn" id="openUditok2">Üdítők</button>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -681,15 +562,16 @@
         <div class="card">
           <h3 class="title">Kóstold meg a kedvenceket</h3>
 
-          <!-- =========================
-               ✅ IDE ILLESZTHETSZ KÍNÁLAT SZÖVEGET
-               ========================= -->
           <p>
-            IDE JÖHET EGY RÖVID LEÍRÁS a kínálatról (melegszendvicsek, napi menü, kávé, desszertek).
+            Friss, gyors ételek és hűsítő italok – mindennap szeretettel várunk.
           </p>
 
-          <button class="outline-btn" id="openMenu3">Étlap megnyitása</button>
-          <button class="outline-btn" id="openUditok3">Üdítők megnyitása</button>
+          <!-- ✅ Csere: „Étlap megnyitása” -> „Ház ajánlata” -->
+          <button class="outline-btn" id="openHazAjanlata">Ház ajánlata</button>
+
+          <!-- ✅ Linkre menő gombok -->
+          <button class="outline-btn" id="btnEtlap2">Étlap</button>
+          <button class="outline-btn" id="btnUditok2">Üdítők</button>
         </div>
       </div>
     </div>
@@ -702,77 +584,88 @@
         <div>© <span id="year"></span> Andrea Büfé — Minden jog fenntartva.</div>
         <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
           <a href="#top" style="color:rgba(31,26,20,.70)">Kezdőlap</a>
-          <a href="#rolunk" style="color:rgba(31,26,20,.70)">Rólunk</a>
+          <a id="openRolunk2" style="color:rgba(31,26,20,.70); cursor:pointer;">Rólunk</a>
           <a href="#kinalat" style="color:rgba(31,26,20,.70)">Kínálat</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ============ MODAL: KERESÉS ============ -->
-  <div class="modal-backdrop" id="searchModal" role="dialog" aria-modal="true" aria-label="Keresés ablak">
+  <!-- ============ MODAL: RÓLUNK (rejtve, gombra nyílik) ============ -->
+  <div class="modal-backdrop" id="rolunkModal" role="dialog" aria-modal="true" aria-label="Rólunk">
+    <div class="modal">
+      <header>
+        <b>Rólunk</b>
+        <button class="close" data-close="rolunkModal" aria-label="Bezárás">✕</button>
+      </header>
+
+      <div class="body">
+        <div class="about-wrap">
+          <div class="about-media" aria-label="Rólunk kép"></div>
+
+          <div class="about-panel">
+            <div class="about-kicker">Andrea Büfé</div>
+            <h2 class="about-title">Rólunk</h2>
+
+            <p class="about-text">Több mint 30 éve Önökért 💛
+
+1993-ban nyitottuk meg kis hamburger büfénket. Andrea akkor még csak néhány évre tervezett, de a sors másképp alakította – és milyen jól tette! Azóta is szeretettel várja régi és új vendégeit.
+
+Az évek során a családi vállalkozás igazi összefogássá vált: lánya, Ivett, valamint Roland is csatlakozott a csapathoz, így ma már együtt dolgozunk azért, hogy mindenki elégedetten távozzon.
+
+2017 óta hivatalosan is Andrea Büfé néven ismernek bennünket, de törzsvendégeink számára mindig is „Bázis” maradunk.
+
+Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt élvezhessük a nyár ízeit és hangulatát.</p>
+
+            <ul class="about-points">
+              <li>Friss, gyors ételek és hűsítő italok</li>
+              <li>Barátságos kiszolgálás, családias hangulat</li>
+              <li>Könnyen megközelíthető, kényelmes hely</li>
+            </ul>
+
+            <div style="margin-top:14px;">
+              <button class="outline-btn" onclick="document.querySelector('#kinalat').scrollIntoView({behavior:'smooth'})">Kínálat</button>
+              <button class="outline-btn" id="btnEtlap3">Étlap</button>
+              <button class="outline-btn" id="btnUditok3">Üdítők</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: HÁZ AJÁNLATA ============ -->
+  <div class="modal-backdrop" id="hazModal" role="dialog" aria-modal="true" aria-label="Ház ajánlata">
+    <div class="modal">
+      <header>
+        <b>Ház ajánlata</b>
+        <button class="close" data-close="hazModal" aria-label="Bezárás">✕</button>
+      </header>
+      <div class="body">
+        <div class="list" id="hazList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: KERESÉS (opcionális) ============ -->
+  <div class="modal-backdrop" id="searchModal" role="dialog" aria-modal="true" aria-label="Keresés">
     <div class="modal">
       <header>
         <b>Keresés</b>
         <button class="close" data-close="searchModal" aria-label="Bezárás">✕</button>
       </header>
       <div class="body">
-        <div class="tabs">
-          <button class="tab active" data-filter="all">Összes</button>
-          <button class="tab" data-filter="etel">Ételek</button>
-          <button class="tab" data-filter="uditok">Üdítők</button>
-        </div>
-
         <div class="list" id="searchResults"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ MODAL: ÉTLAP ============ -->
-  <div class="modal-backdrop" id="menuModal" role="dialog" aria-modal="true" aria-label="Étlap ablak">
-    <div class="modal">
-      <header>
-        <b>Étlap</b>
-        <button class="close" data-close="menuModal" aria-label="Bezárás">✕</button>
-      </header>
-      <div class="body">
-        <div class="list" id="menuList">
-          <!-- Példa - cseréld sajátra -->
-          <div class="item"><div class="meta"><div class="n">Melegszendvics</div><div class="d">Sonka-sajt, friss zöldség</div></div><div class="price">1 690 Ft</div></div>
-          <div class="item"><div class="meta"><div class="n">Napi menü</div><div class="d">Hamburger</div></div><div class="price">2 490 Ft</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ MODAL: ÜDÍTŐK ============ -->
-  <div class="modal-backdrop" id="uditokModal" role="dialog" aria-modal="true" aria-label="Üdítők ablak">
-    <div class="modal">
-      <header>
-        <b>Üdítők</b>
-        <button class="close" data-close="uditokModal" aria-label="Bezárás">✕</button>
-      </header>
-      <div class="body">
-        <div class="list" id="uditokList">
-          <!-- Példa - cseréld sajátra -->
-          <div class="item"><div class="meta"><div class="n">Coca-Cola / Zero</div><div class="d">0,33l / 0,5l</div></div><div class="price">450 Ft-tól</div></div>
-          <div class="item"><div class="meta"><div class="n">Ásványvíz</div><div class="d">Szénsavas / mentes</div></div><div class="price">350 Ft-tól</div></div>
-        </div>
       </div>
     </div>
   </div>
 
   <script>
     // =========================================================
-    // ✅ GITHUB PAGES + KÉPEK (index.html mellé rakva!)
-    // A képek ugyanabban a mappában vannak, mint az index.html
-    //
-    // 🔥 CSERÉLENDŐ KÉPNEVEK:
-    // 1) HERO BAL: images0.jpg (EZT MEGTARTOTTAM)
-    // 2) HERO JOBB: images1.jpg -> ÍRD ÁT A SAJÁTODRA
-    // 3) RÓLUNK KÉP: about-left.jpg -> ÍRD ÁT A SAJÁTODRA
-    // 4) KÍNÁLAT KÉP: feature-left.jpg -> ÍRD ÁT A SAJÁTODRA
+    // ✅ IDE ILLESZD BE KÉSŐBB A LINKJEIDET (ÉTLAP / ITALLAP)
     // =========================================================
+    const ETLAP_URL  = "IDE_JON_AZ_ETLAP_LINK";   // pl. "etlap.html" vagy "https://..."
+    const UDITOK_URL = "IDE_JON_AZ_ITAL_LAP_LINK"; // pl. "uditok.html" vagy "https://..."
 
     // év
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -787,27 +680,8 @@
       document.body.style.overflow = "";
     }
 
-    // gombok
-    document.getElementById("openSearch").addEventListener("click", () => {
-      openModal("searchModal");
-      setActiveFilter("all");
-      renderSearch();
-    });
-    document.getElementById("openMenu").addEventListener("click", () => openModal("menuModal"));
-    document.getElementById("openUditok").addEventListener("click", () => openModal("uditokModal"));
-
-    document.getElementById("openMenu2").addEventListener("click", () => openModal("menuModal"));
-    document.getElementById("openUditok2").addEventListener("click", () => openModal("uditokModal"));
-
-    document.getElementById("openMenu3").addEventListener("click", () => openModal("menuModal"));
-    document.getElementById("openUditok3").addEventListener("click", () => openModal("uditokModal"));
-
-    document.getElementById("scrollKinalat").addEventListener("click", () => {
-      document.querySelector("#kinalat").scrollIntoView({behavior:"smooth", block:"start"});
-    });
-
-    // backdrop click = zárás
-    ["searchModal","menuModal","uditokModal"].forEach(id=>{
+    // Backdrop click = zárás
+    ["rolunkModal","hazModal","searchModal"].forEach(id=>{
       const el = document.getElementById(id);
       el.addEventListener("click", (e)=>{
         if(e.target === el) closeModal(id);
@@ -822,53 +696,57 @@
     // ESC = zárás
     document.addEventListener("keydown", (e)=>{
       if(e.key === "Escape"){
-        ["searchModal","menuModal","uditokModal"].forEach(id => closeModal(id));
+        ["rolunkModal","hazModal","searchModal"].forEach(id => closeModal(id));
       }
     });
 
-    // Kereshető adatok (demo)
-    const offers = [
-      { type:"etel",   name:"Melegszendvics", desc:"Sonka-sajt, friss zöldség", price:"1 690 Ft" },
-      { type:"etel",   name:"Napi menü",      desc:"Leves + főétel",            price:"2 490 Ft" },
-      { type:"etel",   name:"Hamburger",      desc:"Sajttal, szósszal",         price:"2 990 Ft" },
-      { type:"uditok", name:"Coca-Cola / Zero", desc:"0,33l / 0,5l",            price:"450 Ft-tól" },
-      { type:"uditok", name:"Ásványvíz",        desc:"Szénsavas / mentes",      price:"350 Ft-tól" },
-      { type:"uditok", name:"Espresso",         desc:"Klasszikus olasz kávé",   price:"690 Ft" },
-    ];
+    // =========================
+    // RÓLUNK: csak gombra nyíljon
+    // =========================
+    document.getElementById("openRolunk").addEventListener("click", ()=> openModal("rolunkModal"));
+    document.getElementById("openRolunk2").addEventListener("click", ()=> openModal("rolunkModal"));
 
-    let activeFilter = "all";
-    const tabs = Array.from(document.querySelectorAll(".tab"));
-    const resultsEl = document.getElementById("searchResults");
-
-    function setActiveFilter(f){
-      activeFilter = f;
-      tabs.forEach(t => t.classList.toggle("active", t.dataset.filter === f));
-      renderSearch();
-    }
-
-    tabs.forEach(t=>{
-      t.addEventListener("click", ()=> setActiveFilter(t.dataset.filter));
+    // =========================
+    // MENÜ: csak görgetés (ne modal)
+    // =========================
+    document.getElementById("goMenu").addEventListener("click", ()=>{
+      document.querySelector("#kinalat").scrollIntoView({behavior:"smooth", block:"start"});
     });
 
-    function renderSearch(){
-      resultsEl.innerHTML = "";
-      const filtered = offers.filter(o => activeFilter === "all" ? true : o.type === activeFilter);
-
-      if(!filtered.length){
-        const div = document.createElement("div");
-        div.className = "item";
-        div.innerHTML = `
-          <div class="meta">
-            <div class="n">Nincs találat</div>
-            <div class="d">Válts kategóriát.</div>
-          </div>
-          <div class="price">—</div>
-        `;
-        resultsEl.appendChild(div);
+    // =========================
+    // ÉTLAP / ÜDÍTŐK: külön oldalra vigyen
+    // =========================
+    function goTo(url){
+      if(!url || url.includes("IDE_JON")){
+        alert("Ide majd be kell illesztened a linket a scriptben (ETLAP_URL / UDITOK_URL).");
         return;
       }
+      window.location.href = url;
+    }
 
-      filtered.forEach(o=>{
+    document.getElementById("btnEtlap").addEventListener("click", ()=> goTo(ETLAP_URL));
+    document.getElementById("btnUditok").addEventListener("click", ()=> goTo(UDITOK_URL));
+    document.getElementById("btnEtlap2").addEventListener("click", ()=> goTo(ETLAP_URL));
+    document.getElementById("btnUditok2").addEventListener("click", ()=> goTo(UDITOK_URL));
+    document.getElementById("btnEtlap3").addEventListener("click", ()=> goTo(ETLAP_URL));
+    document.getElementById("btnUditok3").addEventListener("click", ()=> goTo(UDITOK_URL));
+
+    // =========================
+    // HÁZ AJÁNLATA: lista + árak
+    // (itt bővítsd a termékeket később)
+    // =========================
+    const houseOffers = [
+      { name:"Melegszendvics", desc:"Sonka-sajt, friss zöldség", price:"1 690 Ft" },
+      { name:"Napi menü", desc:"Hamburger", price:"2 490 Ft" },
+      { name:"Coca-Cola / Zero", desc:"0,33l / 0,5l", price:"450 Ft-tól" },
+      { name:"Ásványvíz", desc:"Szénsavas / mentes", price:"350 Ft-tól" },
+    ];
+
+    const hazList = document.getElementById("hazList");
+
+    function renderHazAjanlata(){
+      hazList.innerHTML = "";
+      houseOffers.forEach(o=>{
         const div = document.createElement("div");
         div.className = "item";
         div.innerHTML = `
@@ -878,36 +756,46 @@
           </div>
           <div class="price">${o.price}</div>
         `;
-        resultsEl.appendChild(div);
+        hazList.appendChild(div);
       });
     }
 
-    // ✅ Scroll animáció (Rólunk elemek)
-    const revealEls = document.querySelectorAll(".reveal");
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
+    document.getElementById("openHazAjanlata").addEventListener("click", ()=>{
+      renderHazAjanlata();
+      openModal("hazModal");
+    });
+
+    // =========================
+    // KERESÉS (opcionális demo)
+    // =========================
+    const searchResults = document.getElementById("searchResults");
+    document.getElementById("openSearch").addEventListener("click", ()=>{
+      searchResults.innerHTML = "";
+      houseOffers.forEach(o=>{
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <div class="meta">
+            <div class="n">${o.name}</div>
+            <div class="d">${o.desc}</div>
+          </div>
+          <div class="price">${o.price}</div>
+        `;
+        searchResults.appendChild(div);
       });
-    }, { threshold: 0.18 });
-    revealEls.forEach(el=> io.observe(el));
+      openModal("searchModal");
+    });
   </script>
 
   <!--
-    =========================
-    ✅ FONTOS (képek helye)
-    =========================
-    A képek az index.html MELLÉ kerülnek (ugyanabba a mappába), pl.:
+    ✅ KÉPEK (index.html mellett):
+    images0.jpg   (HERO BAL)
+    images1.jpg   (HERO JOBB)
+    image0.jpeg   (RÓLUNK BAL KÉP)
+    feature-left.jpg (KÍNÁLAT BAL KÉP)
 
-    index.html
-    images0.jpg
-    images1.jpg
-    about-left.jpg
-    feature-left.jpg
-
-    Ha más a nevük, cseréld a CSS-ben ott, ahol jelöltem:
+    Ha más a nevük, cseréld a CSS-ben ezeket:
+    - .hero-bg .left
     - .hero-bg .right
     - .about-media::before
     - .split-img::before
