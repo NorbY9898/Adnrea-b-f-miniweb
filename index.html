@@ -15,10 +15,10 @@
       /* ✅ KRÉM ALAP + ELEGÁNS SÖTÉT SZÖVEG */
       --cream:#f6f0e6;
       --cream2:#efe6d8;
-      --ink:#1f1a14;          /* fő szöveg (krémhez) */
+      --ink:#1f1a14;
       --ink2:rgba(31,26,20,.74);
       --line:rgba(31,26,20,.14);
-      --accent:#8a5a2b;       /* karamell/barna akcent */
+      --accent:#8a5a2b;
       --accent2:#b07a3f;
       --shadow: 0 18px 50px rgba(0,0,0,.12);
       --radius: 16px;
@@ -36,6 +36,7 @@
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       letter-spacing:.1px;
     }
+
     a{color:inherit; text-decoration:none}
     button{font:inherit}
     .container{max-width:var(--max); margin:0 auto; padding:0 22px}
@@ -46,7 +47,7 @@
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(246,240,230,.78); /* krém üveg */
+      background: rgba(246,240,230,.78);
       border-bottom:1px solid var(--line);
     }
     .nav{
@@ -113,7 +114,7 @@
     .menu a:hover::after{opacity:1; transform: translateY(0)}
 
     .nav-actions{
-      min-width: 180px;
+      min-width: 220px;
       display:flex; align-items:center; justify-content:flex-end; gap:12px;
     }
 
@@ -145,6 +146,7 @@
       font-size:12px;
       cursor:pointer;
       transition:.2s ease;
+      white-space:nowrap;
     }
     .pill:hover{
       background: rgba(138,90,43,.14);
@@ -174,16 +176,17 @@
       transform: scale(1.03);
     }
 
-    /* =========================
-       !!! KÉP HELYE 1/4 (HERO BAL) !!!
-       GitHub Pages: a fájlok azonos repo-ban /assets alatt legyenek
-       ========================= */
-    .hero-bg .left{  background-image:url("./assets/hero-left.jpg"); }
+    /* =======================================================
+       ✅ KÉPEK HELYE (INDEX.HTML MELLETT VANNAK!)
+       - A képeket az index.html mellé tedd ugyanabba a mappába
+       - Útvonal: "images0.jpg" (NINCS assets/ mappa!)
+       ======================================================= */
 
-    /* =========================
-       !!! KÉP HELYE 2/4 (HERO JOBB) !!!
-       ========================= */
-    .hero-bg .right{ background-image:url("./assets/hero-right.jpg"); }
+    /* !!! HERO BAL (már megvan nálad: images0.jpg) !!! */
+    .hero-bg .left{  background-image:url("images0.jpg"); }
+
+    /* !!! HERO JOBB (ide add meg a másik képed nevét) !!! */
+    .hero-bg .right{ background-image:url("images1.jpg"); } /* <-- CSERÉLD! */
 
     .hero::before{
       content:"";
@@ -293,13 +296,11 @@
       transition: .8s cubic-bezier(.2,.7,.2,1);
     }
 
-    /* =========================
-       !!! KÉP HELYE 3/4 (RÓLUNK BAL KÉP) !!!
-       ========================= */
+    /* !!! RÓLUNK BAL KÉP (cseréld a fájlnevet) !!! */
     .about-media::before{
       content:"";
       position:absolute; inset:0;
-      background: url("./assets/image0.jpg") center/cover no-repeat;
+      background: url("image0.jpg") center/cover no-repeat; /* <-- CSERÉLD! */
       transform: scale(1.05);
       filter: contrast(1.03) saturate(.98);
     }
@@ -387,7 +388,7 @@
     }
 
     /* =========================
-       KÍNÁLAT SPLIT (bal kép / jobb szöveg)
+       KÍNÁLAT SPLIT
        ========================= */
     .split{
       position:relative;
@@ -405,13 +406,11 @@
       border-right:1px solid var(--line);
     }
 
-    /* =========================
-       !!! KÉP HELYE 4/4 (KÍNÁLAT BAL NAGY KÉP) !!!
-       ========================= */
+    /* !!! KÍNÁLAT BAL NAGY KÉP (cseréld a fájlnevet) !!! */
     .split-img::before{
       content:"";
       position:absolute; inset:0;
-      background: url("./assets/feature-left.jpg") center/cover no-repeat;
+      background: url("feature-left.jpg") center/cover no-repeat; /* <-- CSERÉLD! */
       transform: scale(1.04);
       filter: contrast(1.03) saturate(.98);
     }
@@ -492,18 +491,7 @@
       cursor:pointer;
     }
     .modal .body{padding: 18px;}
-    .search-row{display:flex; gap:10px; align-items:center;}
-    .search-row input{
-      flex:1;
-      height:44px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      color:var(--ink);
-      padding: 0 14px;
-      outline:none;
-    }
-    .search-row input::placeholder{color: rgba(31,26,20,.48)}
+
     .tabs{
       display:flex; gap:10px; flex-wrap:wrap;
       margin-top:14px;
@@ -547,7 +535,6 @@
       white-space:nowrap;
     }
 
-    /* FOOTER */
     footer{
       border-top:1px solid var(--line);
       padding: 26px 0;
@@ -560,7 +547,6 @@
       align-items:center; justify-content:space-between;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 980px){
       .hero{height: 460px;}
       .hero-title{font-size:44px}
@@ -632,8 +618,7 @@
       <h1 class="hero-title">ANDREA BÜFÉ</h1>
       <div class="hero-sub">Hangulatos büféter</div>
       <p class="hero-text">
-        Barátságos kiszolgálás és válogatott kínálat.
-        Ülj be hozzánk egy ebédre vagy egy hüsitő italra!
+        Modern, krém-elegáns hangulat, barátságos kiszolgálás és válogatott kínálat.
       </p>
     </div>
   </section>
@@ -652,16 +637,8 @@
                ✅ IDE ILLESZD A SAJÁT RÓLUNK SZÖVEGED
                ========================= -->
           <p class="about-text">
-            Több mint 30 éve Önökért 💛
-
-            1993-ban nyitottuk meg kis hamburger büfénket. Andrea akkor még csak néhány évre tervezett, de a sors másképp alakította – és milyen jól tette! Azóta is szeretettel várja régi és új vendégeit.
-
-            Az évek során a családi vállalkozás igazi összefogássá vált: lánya, Ivett, valamint Roland is csatlakozott a csapathoz, így ma már együtt dolgozunk azért, hogy mindenki elégedetten távozzon.
-
-           2017 óta hivatalosan is Andrea Büfé néven ismernek bennünket, de törzsvendégeink számára mindig is „Bázis” maradunk. A kis „Bázis” feliratú táblánkat is tőlük kaptuk – ami számunkra nemcsak egy név, hanem egy közösség jelképe.
-
-           Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt élvezhessük a nyár ízeit és hangulatát
-.
+            IDE JÖN A RÓLUNK SZÖVEG. Írj pár mondatot a hely történetéről, hangulatáról,
+            kínálatról, miért különleges az Andrea Büfé, és miért érdemes betérni.
           </p>
 
           <ul class="about-points">
@@ -733,11 +710,6 @@
         <button class="close" data-close="searchModal" aria-label="Bezárás">✕</button>
       </header>
       <div class="body">
-        <div class="search-row">
-          <input id="searchInput" type="text" placeholder="Keress… (pl. kávé, menü, üdítő)" />
-          <button class="pill" id="doSearch">Keres</button>
-        </div>
-
         <div class="tabs">
           <button class="tab active" data-filter="all">Összes</button>
           <button class="tab" data-filter="etel">Ételek</button>
@@ -759,27 +731,8 @@
       <div class="body">
         <div class="list" id="menuList">
           <!-- Példa - cseréld sajátra -->
-          <div class="item">
-            <div class="meta">
-              <div class="n">Melegszendvics</div>
-              <div class="d">Sonka-sajt, friss zöldség</div>
-            </div>
-            <div class="price">1 690 Ft</div>
-          </div>
-          <div class="item">
-            <div class="meta">
-              <div class="n">Napi menü</div>
-              <div class="d">Leves + főétel (aktuális a pultnál)</div>
-            </div>
-            <div class="price">2 490 Ft</div>
-          </div>
-          <div class="item">
-            <div class="meta">
-              <div class="n">Hamburger</div>
-              <div class="d">Sajttal, szósszal</div>
-            </div>
-            <div class="price">2 990 Ft</div>
-          </div>
+          <div class="item"><div class="meta"><div class="n">Melegszendvics</div><div class="d">Sonka-sajt, friss zöldség</div></div><div class="price">1 690 Ft</div></div>
+          <div class="item"><div class="meta"><div class="n">Napi menü</div><div class="d">Leves + főétel</div></div><div class="price">2 490 Ft</div></div>
         </div>
       </div>
     </div>
@@ -795,27 +748,8 @@
       <div class="body">
         <div class="list" id="uditokList">
           <!-- Példa - cseréld sajátra -->
-          <div class="item">
-            <div class="meta">
-              <div class="n">Coca-Cola / Zero</div>
-              <div class="d">0,33l / 0,5l</div>
-            </div>
-            <div class="price">450 Ft-tól</div>
-          </div>
-          <div class="item">
-            <div class="meta">
-              <div class="n">Ásványvíz</div>
-              <div class="d">Szénsavas / mentes</div>
-            </div>
-            <div class="price">350 Ft-tól</div>
-          </div>
-          <div class="item">
-            <div class="meta">
-              <div class="n">Kávéitalok</div>
-              <div class="d">Espresso, Cappuccino</div>
-            </div>
-            <div class="price">690 Ft-tól</div>
-          </div>
+          <div class="item"><div class="meta"><div class="n">Coca-Cola / Zero</div><div class="d">0,33l / 0,5l</div></div><div class="price">450 Ft-tól</div></div>
+          <div class="item"><div class="meta"><div class="n">Ásványvíz</div><div class="d">Szénsavas / mentes</div></div><div class="price">350 Ft-tól</div></div>
         </div>
       </div>
     </div>
@@ -823,21 +757,20 @@
 
   <script>
     // =========================================================
-    // ✅ GITHUB PAGES + KÉPEK
-    // A képeket tedd a repo-ba: /assets mappa
-    // és használd relatív útvonallal: "./assets/valami.jpg"
+    // ✅ GITHUB PAGES + KÉPEK (index.html mellé rakva!)
+    // A képek ugyanabban a mappában vannak, mint az index.html
     //
-    // 🔥 Gyors lista:
-    // 1) HERO BAL:   "./assets/hero-left.jpg"
-    // 2) HERO JOBB:  "./assets/hero-right.jpg"
-    // 3) RÓLUNK KÉP: "./assets/about-left.jpg"
-    // 4) KÍNÁLAT KÉP:"./assets/feature-left.jpg"
+    // 🔥 CSERÉLENDŐ KÉPNEVEK:
+    // 1) HERO BAL: images0.jpg (EZT MEGTARTOTTAM)
+    // 2) HERO JOBB: images1.jpg -> ÍRD ÁT A SAJÁTODRA
+    // 3) RÓLUNK KÉP: about-left.jpg -> ÍRD ÁT A SAJÁTODRA
+    // 4) KÍNÁLAT KÉP: feature-left.jpg -> ÍRD ÁT A SAJÁTODRA
     // =========================================================
 
     // év
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ====== Modal nyit/zár ======
+    // Modal nyit/zár
     function openModal(id){
       document.getElementById(id).classList.add("show");
       document.body.style.overflow = "hidden";
@@ -851,10 +784,8 @@
     document.getElementById("openSearch").addEventListener("click", () => {
       openModal("searchModal");
       setActiveFilter("all");
-      renderSearch("");
-      setTimeout(() => document.getElementById("searchInput").focus(), 50);
+      renderSearch();
     });
-
     document.getElementById("openMenu").addEventListener("click", () => openModal("menuModal"));
     document.getElementById("openUditok").addEventListener("click", () => openModal("uditokModal"));
 
@@ -888,46 +819,33 @@
       }
     });
 
-    // ====== Kereshető adatok (demo) ======
-    // (Ha akarod, írd át a saját tételeidre)
+    // Kereshető adatok (demo)
     const offers = [
       { type:"etel",   name:"Melegszendvics", desc:"Sonka-sajt, friss zöldség", price:"1 690 Ft" },
       { type:"etel",   name:"Napi menü",      desc:"Leves + főétel",            price:"2 490 Ft" },
-      { type:"etel",   name:"Hamburger",      desc:"Sajttal, szósszal",          price:"2 990 Ft" },
+      { type:"etel",   name:"Hamburger",      desc:"Sajttal, szósszal",         price:"2 990 Ft" },
       { type:"uditok", name:"Coca-Cola / Zero", desc:"0,33l / 0,5l",            price:"450 Ft-tól" },
       { type:"uditok", name:"Ásványvíz",        desc:"Szénsavas / mentes",      price:"350 Ft-tól" },
       { type:"uditok", name:"Espresso",         desc:"Klasszikus olasz kávé",   price:"690 Ft" },
     ];
 
-    const searchInput = document.getElementById("searchInput");
-    const searchResults = document.getElementById("searchResults");
-    const doSearch = document.getElementById("doSearch");
-    const tabs = Array.from(document.querySelectorAll(".tab"));
-
     let activeFilter = "all";
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const resultsEl = document.getElementById("searchResults");
 
     function setActiveFilter(f){
       activeFilter = f;
       tabs.forEach(t => t.classList.toggle("active", t.dataset.filter === f));
-      renderSearch(searchInput.value);
+      renderSearch();
     }
 
     tabs.forEach(t=>{
       t.addEventListener("click", ()=> setActiveFilter(t.dataset.filter));
     });
 
-    function renderSearch(q){
-      const query = (q || "").trim().toLowerCase();
-
-      const filtered = offers.filter(o=>{
-        const matchesText =
-          o.name.toLowerCase().includes(query) ||
-          o.desc.toLowerCase().includes(query);
-        const matchesType = (activeFilter === "all") ? true : (o.type === activeFilter);
-        return matchesText && matchesType;
-      });
-
-      searchResults.innerHTML = "";
+    function renderSearch(){
+      resultsEl.innerHTML = "";
+      const filtered = offers.filter(o => activeFilter === "all" ? true : o.type === activeFilter);
 
       if(!filtered.length){
         const div = document.createElement("div");
@@ -935,11 +853,11 @@
         div.innerHTML = `
           <div class="meta">
             <div class="n">Nincs találat</div>
-            <div class="d">Próbáld más kulcsszóval vagy válts kategóriát.</div>
+            <div class="d">Válts kategóriát.</div>
           </div>
           <div class="price">—</div>
         `;
-        searchResults.appendChild(div);
+        resultsEl.appendChild(div);
         return;
       }
 
@@ -953,12 +871,9 @@
           </div>
           <div class="price">${o.price}</div>
         `;
-        searchResults.appendChild(div);
+        resultsEl.appendChild(div);
       });
     }
-
-    doSearch.addEventListener("click", ()=> renderSearch(searchInput.value));
-    searchInput.addEventListener("input", ()=> renderSearch(searchInput.value));
 
     // ✅ Scroll animáció (Rólunk elemek)
     const revealEls = document.querySelectorAll(".reveal");
@@ -970,8 +885,25 @@
         }
       });
     }, { threshold: 0.18 });
-
     revealEls.forEach(el=> io.observe(el));
   </script>
+
+  <!--
+    =========================
+    ✅ FONTOS (képek helye)
+    =========================
+    A képek az index.html MELLÉ kerülnek (ugyanabba a mappába), pl.:
+
+    index.html
+    images0.jpg
+    images1.jpg
+    about-left.jpg
+    feature-left.jpg
+
+    Ha más a nevük, cseréld a CSS-ben ott, ahol jelöltem:
+    - .hero-bg .right
+    - .about-media::before
+    - .split-img::before
+  -->
 </body>
 </html>
