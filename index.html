@@ -60,7 +60,7 @@
       width:34px;
       height:34px;
       border-radius:10px;
-      background: url("./logo.png") center/cover no-repeat;
+      background: url("./logo.png") center/cover no-repeat; /* <-- LOGÓ KÉP */
       flex:0 0 auto;
     }
     .brand .name{
@@ -149,7 +149,7 @@
       box-shadow: 0 14px 30px rgba(0,0,0,.10);
     }
 
-    /* HERO */
+    /* HERO (kollázs) */
     .hero{
       position:relative;
       height: 420px;
@@ -168,8 +168,10 @@
       filter:saturate(.98) contrast(1.02);
       transform: scale(1.03);
     }
+
+    /* ✅ KÉPEK: index.html mellett */
     .hero-bg .left{  background-image:url("./images0.jpg"); }
-    .hero-bg .right{ background-image:url("./images1.jpg"); }
+    .hero-bg .right{ background-image:url("./images1.jpg"); } /* <-- CSERÉLD */
 
     .hero::before{
       content:"";
@@ -229,7 +231,7 @@
     .section-head{
       background: linear-gradient(180deg, rgba(246,240,230,.75), rgba(239,230,216,.75));
       border-bottom:1px solid var(--line);
-      padding: 38px 0 32px;
+      padding: 34px 0 30px;
       text-align:center;
     }
     .section-head .small{
@@ -246,6 +248,38 @@
       font-weight:700;
       color:var(--ink);
     }
+
+    /* ✅ ÚJ: RÓLUNK gomb a "Kiváló ízek" fölé (anim marad) */
+    .section-actions{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      margin: 0 0 10px;
+      flex-wrap:wrap;
+    }
+    .section-linkbtn{
+      border:0;
+      background: transparent;
+      padding: 8px 10px;
+      cursor:pointer;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(31,26,20,.78);
+      position:relative;
+    }
+    .section-linkbtn::after{
+      content:"";
+      position:absolute; left:10px; right:10px; bottom:2px;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(138,90,43,.85), transparent);
+      opacity:0;
+      transform: translateY(4px);
+      transition:.25s ease;
+    }
+    .section-linkbtn:hover{ color:var(--ink); }
+    .section-linkbtn:hover::after{ opacity:1; transform: translateY(0); }
 
     /* KÍNÁLAT SPLIT */
     .split{
@@ -266,7 +300,7 @@
     .split-img::before{
       content:"";
       position:absolute; inset:0;
-      background: url("./image6.jpeg") center/cover no-repeat;
+      background: url("./image6.jpeg") center/cover no-repeat; /* <-- CSERÉLD */
       transform: scale(1.04);
       filter: contrast(1.03) saturate(.98);
     }
@@ -333,24 +367,23 @@
       align-items:center;
       justify-content:center;
       z-index:100;
-      padding: 14px;              /* ✅ mobilon több hely marad */
+      padding: 14px;
     }
     .modal-backdrop.show{display:flex}
 
     .modal{
       width:min(900px, 100%);
-      max-height: 90vh;           /* ✅ sose lógjon ki */
+      max-height: 90vh;
       border-radius: 18px;
       border:1px solid var(--line);
       background: rgba(246,240,230,.97);
       box-shadow: 0 30px 80px rgba(0,0,0,.22);
-      overflow:hidden;            /* ✅ belső scroll */
+      overflow:hidden;
       color:var(--ink);
       display:flex;
-      flex-direction:column;      /* ✅ header + body */
+      flex-direction:column;
     }
 
-    /* ✅ sticky header => X mindig látszik */
     .modal header{
       display:flex;
       align-items:center;
@@ -370,15 +403,13 @@
       color:var(--ink);
     }
     .close{
-      width:40px; height:40px;    /* ✅ könnyebb rányomni mobilon */
+      width:40px; height:40px;
       border-radius:12px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.55);
       color:var(--ink);
       cursor:pointer;
     }
-
-    /* ✅ a body scrollozik, nem az egész oldal */
     .modal .body{
       padding: 14px;
       overflow:auto;
@@ -424,7 +455,7 @@
     .about-media::before{
       content:"";
       position:absolute; inset:0;
-      background: url("./image0.jpeg") center/cover no-repeat;
+      background: url("./image0.jpeg") center/cover no-repeat; /* <-- CSERÉLD, ha kell */
       transform: scale(1.03);
     }
     .about-media::after{
@@ -438,8 +469,6 @@
       background: rgba(255,255,255,.55);
       box-shadow: var(--shadow);
       padding: 22px 18px;
-      overflow:visible;  /* ✅ ne legyen külön belső scroll mobilon */
-      max-height:none;   /* ✅ levesszük a fix max-height-et */
     }
     .about-kicker{
       font-size:12px;
@@ -497,12 +526,14 @@
       .card{max-width: 680px; margin:0 auto;}
     }
 
-    /* ✅ MOBIL: Rólunk modal 1 oszlop + kisebb kép */
+    /* ✅ MOBIL: a "Rólunk" gomb sor + modal */
     @media (max-width: 640px){
-      .about-wrap{grid-template-columns:1fr;}
-      .about-media{min-height: 220px;}
+      .section-actions{gap:10px}
+      .section-linkbtn{padding:10px 12px}
       .modal-backdrop{padding: 10px;}
       .modal .body{padding: 12px;}
+      .about-wrap{grid-template-columns:1fr;}
+      .about-media{min-height: 220px;}
       .about-title{font-size:28px}
     }
 
@@ -528,8 +559,8 @@
           </div>
         </a>
 
+        <!-- ✅ RÓLUNK KIVÉVE FELÜLRŐL -->
         <nav class="menu" aria-label="Főmenü">
-          <a id="openRolunk">Rólunk</a>
           <a href="#kinalat">Kínálat</a>
           <a id="goMenu">Menü</a>
         </nav>
@@ -567,6 +598,12 @@
   <!-- SECTION HEAD -->
   <section class="section-head" id="kinalat">
     <div class="container">
+
+      <!-- ✅ IDE került a RÓLUNK gomb (Kiváló ízek fölé) -->
+      <div class="section-actions" aria-label="Gyors gombok">
+        <button class="section-linkbtn" id="openRolunkHere">Rólunk</button>
+      </div>
+
       <div class="small">Kiváló ízek Kiskunmajsán</div>
       <h2>KÍNÁLAT</h2>
     </div>
@@ -598,7 +635,7 @@
         <div>© <span id="year"></span> Andrea Büfé — Minden jog fenntartva.</div>
         <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
           <a href="#top" style="color:rgba(31,26,20,.70)">Kezdőlap</a>
-          <a id="openRolunk2" style="color:rgba(31,26,20,.70); cursor:pointer;">Rólunk</a>
+          <a id="openRolunkFooter" style="color:rgba(31,26,20,.70); cursor:pointer;">Rólunk</a>
           <a href="#kinalat" style="color:rgba(31,26,20,.70)">Kínálat</a>
         </div>
       </div>
@@ -671,7 +708,7 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
   <script>
     // ✅ LINKEK
     const ETLAP_URL  = "https://norby9898.github.io/Andrea-tlap/";
-    const UDITOK_URL = "IDE_JON_AZ_ITAL_LAP_LINK";
+    const UDITOK_URL = "IDE_JON_AZ_ITAL_LAP_LINK"; // <-- majd cseréled, ha kész
 
     // év
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -706,9 +743,9 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
       }
     });
 
-    // Rólunk
-    document.getElementById("openRolunk").addEventListener("click", ()=> openModal("rolunkModal"));
-    document.getElementById("openRolunk2").addEventListener("click", ()=> openModal("rolunkModal"));
+    // ✅ Rólunk megnyitás (új helyről + footerből)
+    document.getElementById("openRolunkHere").addEventListener("click", ()=> openModal("rolunkModal"));
+    document.getElementById("openRolunkFooter").addEventListener("click", ()=> openModal("rolunkModal"));
 
     // Menü görgetés
     document.getElementById("goMenu").addEventListener("click", ()=>{
@@ -778,5 +815,14 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
       openModal("searchModal");
     });
   </script>
+
+  <!--
+    ✅ KÉPEK (index.html mellett):
+    logo.png
+    images0.jpg
+    images1.jpg
+    image0.jpeg
+    image6.jpeg
+  -->
 </body>
 </html>
