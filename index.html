@@ -60,7 +60,8 @@
       width:34px;
       height:34px;
       border-radius:10px;
-      background: url("./logo.png") center/cover no-repeat; /* <-- LOGÓ KÉP */
+      background: url("./logo.png") center/cover no-repeat;
+      flex:0 0 auto;
     }
     .brand .name{
       font-family:"Cormorant Garamond", serif;
@@ -148,7 +149,7 @@
       box-shadow: 0 14px 30px rgba(0,0,0,.10);
     }
 
-    /* HERO (kollázs) */
+    /* HERO */
     .hero{
       position:relative;
       height: 420px;
@@ -167,10 +168,8 @@
       filter:saturate(.98) contrast(1.02);
       transform: scale(1.03);
     }
-
-    /* ✅ KÉPEK: index.html mellett */
     .hero-bg .left{  background-image:url("./images0.jpg"); }
-    .hero-bg .right{ background-image:url("./images1.jpg"); } /* <-- CSERÉLD */
+    .hero-bg .right{ background-image:url("./images1.jpg"); }
 
     .hero::before{
       content:"";
@@ -267,7 +266,7 @@
     .split-img::before{
       content:"";
       position:absolute; inset:0;
-      background: url("./image6.jpeg") center/cover no-repeat; /* <-- CSERÉLD */
+      background: url("./image6.jpeg") center/cover no-repeat;
       transform: scale(1.04);
       filter: contrast(1.03) saturate(.98);
     }
@@ -324,7 +323,9 @@
       transform: translateY(-1px);
     }
 
-    /* MODALOK */
+    /* =========================
+       ✅ MODAL FIX (MOBILBARÁT)
+       ========================= */
     .modal-backdrop{
       position:fixed; inset:0;
       background: rgba(0,0,0,.48);
@@ -332,24 +333,34 @@
       align-items:center;
       justify-content:center;
       z-index:100;
-      padding: 22px;
+      padding: 14px;              /* ✅ mobilon több hely marad */
     }
     .modal-backdrop.show{display:flex}
+
     .modal{
       width:min(900px, 100%);
+      max-height: 90vh;           /* ✅ sose lógjon ki */
       border-radius: 18px;
       border:1px solid var(--line);
-      background: rgba(246,240,230,.95);
+      background: rgba(246,240,230,.97);
       box-shadow: 0 30px 80px rgba(0,0,0,.22);
-      overflow:hidden;
+      overflow:hidden;            /* ✅ belső scroll */
       color:var(--ink);
+      display:flex;
+      flex-direction:column;      /* ✅ header + body */
     }
+
+    /* ✅ sticky header => X mindig látszik */
     .modal header{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding: 16px 18px;
+      padding: 14px 14px;
       border-bottom:1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: rgba(246,240,230,.98);
+      z-index: 5;
     }
     .modal header b{
       font-family:"Cormorant Garamond", serif;
@@ -359,14 +370,20 @@
       color:var(--ink);
     }
     .close{
-      width:38px; height:38px;
+      width:40px; height:40px;    /* ✅ könnyebb rányomni mobilon */
       border-radius:12px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.45);
+      background: rgba(255,255,255,.55);
       color:var(--ink);
       cursor:pointer;
     }
-    .modal .body{padding: 18px;}
+
+    /* ✅ a body scrollozik, nem az egész oldal */
+    .modal .body{
+      padding: 14px;
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+    }
 
     .list{display:grid; gap:10px;}
     .item{
@@ -407,7 +424,7 @@
     .about-media::before{
       content:"";
       position:absolute; inset:0;
-      background: url("./image0.jpeg") center/cover no-repeat; /* <-- CSERÉLD, ha kell */
+      background: url("./image0.jpeg") center/cover no-repeat;
       transform: scale(1.03);
     }
     .about-media::after{
@@ -421,8 +438,8 @@
       background: rgba(255,255,255,.55);
       box-shadow: var(--shadow);
       padding: 22px 18px;
-      overflow:auto;
-      max-height: 520px;
+      overflow:visible;  /* ✅ ne legyen külön belső scroll mobilon */
+      max-height:none;   /* ✅ levesszük a fix max-height-et */
     }
     .about-kicker{
       font-size:12px;
@@ -478,16 +495,22 @@
       .split-img{min-height: 320px; border-right:none; border-bottom:1px solid var(--line);}
       .split-content{padding: 34px 22px;}
       .card{max-width: 680px; margin:0 auto;}
-
-      .about-wrap{grid-template-columns:1fr;}
-      .about-panel{max-height:none}
     }
+
+    /* ✅ MOBIL: Rólunk modal 1 oszlop + kisebb kép */
+    @media (max-width: 640px){
+      .about-wrap{grid-template-columns:1fr;}
+      .about-media{min-height: 220px;}
+      .modal-backdrop{padding: 10px;}
+      .modal .body{padding: 12px;}
+      .about-title{font-size:28px}
+    }
+
     @media (max-width: 520px){
       .hero-title{font-size:36px}
       .hero-center{padding:20px 18px}
       .brand .name{font-size:16px}
       .pill{padding:0 10px}
-      .about-title{font-size:28px}
     }
   </style>
 </head>
@@ -613,8 +636,6 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
               <li>Barátságos kiszolgálás, családias hangulat</li>
               <li>Könnyen megközelíthető, kényelmes hely</li>
             </ul>
-
-            <!-- ✅ KÉRÉS: innen kivettük a Kínálat / Étlap / Üdítők gombokat -->
           </div>
         </div>
       </div>
@@ -650,7 +671,7 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
   <script>
     // ✅ LINKEK
     const ETLAP_URL  = "https://norby9898.github.io/Andrea-tlap/";
-    const UDITOK_URL = "IDE_JON_AZ_ITAL_LAP_LINK"; // <-- majd cseréled, ha kész
+    const UDITOK_URL = "IDE_JON_AZ_ITAL_LAP_LINK";
 
     // év
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -700,7 +721,7 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
         alert("Ide majd be kell illesztened a linket (UDITOK_URL).");
         return;
       }
-      window.location.href = url;  // ✅ JAVÍTVA (nálad itt volt a hiba!)
+      window.location.href = url;
     }
 
     // Étlap/Üdítők gombok
@@ -757,14 +778,5 @@ Minden strandszezonban szeretettel várjuk kedves vendégeinket, hogy együtt é
       openModal("searchModal");
     });
   </script>
-
-  <!--
-    ✅ KÉPEK (index.html mellett):
-    logo.png
-    images0.jpg
-    images1.jpg
-    image0.jpeg
-    image6.jpeg
-  -->
 </body>
 </html>
