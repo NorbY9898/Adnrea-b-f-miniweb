@@ -130,24 +130,39 @@
     }
 
     .pill{
-      height:40px;
-      padding:0 14px;
-      border-radius:12px;
+      position:relative;
+      height:42px;
+      padding:0 18px;
+      border-radius:14px;
       border:1px solid rgba(138,90,43,.40);
-      background: rgba(138,90,43,.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.58), rgba(138,90,43,.10));
       color:var(--ink);
       letter-spacing:.18em;
       text-transform:uppercase;
       font-size:12px;
       cursor:pointer;
-      transition:.2s ease;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
       white-space:nowrap;
+      overflow:hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 20px rgba(0,0,0,.05);
+    }
+    .pill::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent 15%, rgba(255,255,255,.45) 35%, transparent 55%);
+      transform:translateX(-120%);
+      transition:transform .7s ease;
     }
     .pill:hover{
-      background: rgba(138,90,43,.14);
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(0,0,0,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(138,90,43,.16));
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0,0,0,.12);
+      border-color: rgba(138,90,43,.58);
     }
+    .pill:hover::before{ transform:translateX(120%); }
 
     /* HERO (kollázs) */
     .hero{
@@ -296,18 +311,31 @@
       position:relative;
       overflow:hidden;
       border-right:1px solid var(--line);
+      min-height: 420px;
+      background: #e7dccf;
     }
-    .split-img::before{
-      content:"";
-      position:absolute; inset:0;
-      background: url("./image6.jpeg") center/cover no-repeat; /* <-- CSERÉLD */
-      transform: scale(1.04);
-      filter: contrast(1.03) saturate(.98);
+    .split-img img{
+      width:100%;
+      height:100%;
+      min-height:420px;
+      display:block;
+      object-fit:cover;
+      object-position:center;
+      transform:scale(1.01);
+      filter:contrast(1.03) saturate(1.05);
+      transition: transform .8s ease, filter .8s ease;
+    }
+    .split-img:hover img{
+      transform:scale(1.055);
+      filter:contrast(1.06) saturate(1.12);
     }
     .split-img::after{
       content:"";
       position:absolute; inset:0;
-      background: radial-gradient(900px 420px at 30% 50%, rgba(0,0,0,.06), rgba(0,0,0,.32));
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.12), rgba(0,0,0,.02) 45%, rgba(246,240,230,.12)),
+        radial-gradient(900px 420px at 30% 50%, rgba(255,255,255,.06), rgba(0,0,0,.14));
+      pointer-events:none;
     }
     .split-content{
       padding: 54px 34px;
@@ -336,26 +364,50 @@
       line-height: 1.8;
     }
 
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:8px;
+    }
+
     .outline-btn{
+      position:relative;
       display:inline-flex;
-      height:42px;
-      padding:0 16px;
-      border-radius: 12px;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:0 18px;
+      border-radius:14px;
       border:1px solid rgba(138,90,43,.45);
-      background: rgba(255,255,255,.25);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.58), rgba(138,90,43,.08));
       color:var(--ink);
       letter-spacing:.18em;
       text-transform:uppercase;
       font-size:12px;
       cursor:pointer;
-      transition:.2s ease;
-      margin-right:10px;
-      margin-top:8px;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+      overflow:hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 10px 24px rgba(0,0,0,.06);
+      white-space:nowrap;
+    }
+    .outline-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent 15%, rgba(255,255,255,.42) 35%, transparent 55%);
+      transform:translateX(-120%);
+      transition:transform .7s ease;
     }
     .outline-btn:hover{
-      background: rgba(138,90,43,.12);
-      transform: translateY(-1px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.74), rgba(138,90,43,.14));
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(0,0,0,.12);
+      border-color:rgba(138,90,43,.62);
     }
+    .outline-btn:hover::before{ transform:translateX(120%); }
 
     /* =========================
        ✅ MODAL FIX (MOBILBARÁT)
@@ -528,6 +580,67 @@
 
     /* ✅ MOBIL: a "Rólunk" gomb sor + modal */
     @media (max-width: 640px){
+      .container{padding:0 14px}
+      .topbar{position:sticky}
+      .nav{
+        height:auto;
+        min-height:70px;
+        padding:10px 0;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .brand{
+        width:100%;
+        min-width:0;
+        justify-content:center;
+      }
+      .nav-actions{
+        width:100%;
+        min-width:0;
+        justify-content:center;
+        gap:8px;
+        flex-wrap:wrap;
+      }
+      .icon-btn{width:40px; height:40px; flex:0 0 40px}
+      .pill{
+        height:40px;
+        padding:0 12px;
+        font-size:11px;
+        letter-spacing:.14em;
+        flex:1 1 112px;
+        max-width:150px;
+      }
+      .hero{
+        height:auto;
+        min-height:430px;
+      }
+      .hero-bg{grid-template-columns:1fr;}
+      .hero-bg .right{display:none}
+      .hero-center{
+        width:calc(100% - 28px);
+        top:54%;
+      }
+      .split-img{
+        min-height:260px;
+      }
+      .split-img img{
+        min-height:260px;
+      }
+      .split-content{
+        padding:30px 16px;
+      }
+      .cta-row{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+      .outline-btn{
+        width:100%;
+        min-height:46px;
+        padding:0 12px;
+        font-size:11px;
+        letter-spacing:.14em;
+      }
       .section-actions{gap:10px}
       .section-linkbtn{padding:10px 12px}
       .modal-backdrop{padding: 10px;}
@@ -541,7 +654,6 @@
       .hero-title{font-size:36px}
       .hero-center{padding:20px 18px}
       .brand .name{font-size:16px}
-      .pill{padding:0 10px}
     }
   </style>
 </head>
@@ -612,17 +724,18 @@
   <!-- KÍNÁLAT SPLIT -->
   <section class="split">
     <div class="split-wrap">
-      <div class="split-img" aria-label="Kínálat kép"></div>
+      <div class="split-img" aria-label="Kínálat kép"><img src="./image6.jpeg" alt="Andrea Büfé kínálat"></div>
 
       <div class="split-content">
         <div class="card">
           <h3 class="title">Kóstold meg a kedvenceket</h3>
           <p>Friss, gyors ételek és hűsítő italok – mindennap szeretettel várunk.</p>
 
-          <button class="outline-btn" id="openHazAjanlata">Ház ajánlata</button>
-
-          <button class="outline-btn" id="btnEtlap2">Étlap</button>
-          <button class="outline-btn" id="btnUditok2">Üdítők</button>
+          <div class="cta-row">
+            <button class="outline-btn" id="openHazAjanlata">Ház ajánlata</button>
+            <button class="outline-btn" id="btnEtlap2">Étlap</button>
+            <button class="outline-btn" id="btnUditok2">Üdítők</button>
+          </div>
         </div>
       </div>
     </div>
